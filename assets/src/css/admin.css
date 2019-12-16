@@ -1,0 +1,269 @@
+:root {
+
+  --icon-dashboard: '\f015';
+  --icon-posts: '\f15c';
+  --icon-media: '\f87c';
+  --icon-pages: '\f0c5';
+  --icon-comments: '\f086';
+  --icon-appearance: '\f53f';
+  --icon-plugins: '\f1e6';
+  --icon-users: '\f500';
+  --icon-tools: '\f7d9';
+  --icon-settings: '\f085';
+  --icon-support: '\f059';
+
+}
+
+/*
+========================================
+Hide unwanted elements in the dashboard.
+========================================
+*/
+
+#wp-admin-bar-wp-logo,
+#adminmenu .wp-menu-separator,
+#collapse-menu,
+#footer-thankyou {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+
+/*
+========================================
+Increase the height of the admin bard.
+========================================
+*/
+
+html.wp-toolbar {
+  padding-top: 34px !important;
+}
+
+#wpadminbar {
+  line-height: 34px !important;
+  height: 34px !important;
+}
+
+#wp-admin-bar-site-name > a {
+  padding-left: 0px !important;
+}
+
+
+/*
+========================================
+Get rid of the dumb "Howdy" message
+next to the users name in the admin bar.
+========================================
+*/
+
+#wp-admin-bar-my-account > a {
+  align-items: center !important;
+  display: flex !important;
+  overflow: hidden !important;
+  text-indent: -999px !important;
+}
+
+#wp-admin-bar-my-account > a .display-name {
+  text-indent: 0px !important;
+}
+
+#wp-admin-bar-my-account > a img {
+  margin-top: 0px !important;
+}
+
+
+/*
+========================================
+Replace any WordPress Dashicons with 
+icons from the FontAwesome library.
+========================================
+*/
+
+#dashboard_right_now li a:before,
+#dashboard_right_now li>span:before {
+  text-align: center;
+  margin: 0 0 0 6px;
+  width: 24px;
+}
+
+#dashboard_right_now li a:before,
+#dashboard_right_now li>span:before,
+#wp-admin-bar-site-name > a::before,
+.wp-menu-image::before {
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+}
+
+#wp-admin-bar-site-name > a::before,
+.wp-menu-image::before {
+  height: 34px !important;
+  line-height: 34px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  text-align: center !important;
+  top: 0px !important;
+  width: 36px !important;
+}
+
+/* Replace the View Site icon. */
+#wp-admin-bar-site-name > a::before {
+  content: '\f57d' !important;
+}
+
+/* Replace the Dashboard icon. */
+.wp-menu-image.dashicons-dashboard::before {
+  content: var(--icon-dashboard) !important;
+}
+
+/* Replace the Posts icon. */
+#dashboard_right_now .post-count a:before,
+#dashboard_right_now .post-count span:before,
+.wp-menu-image.dashicons-admin-post::before {
+  content: var(--icon-posts) !important;
+}
+
+/* Replace the Media icon. */
+.wp-menu-image.dashicons-admin-media::before {
+  content: var(--icon-media) !important;
+}
+
+/* Replace the Pages icon. */
+#dashboard_right_now .page-count a:before,
+#dashboard_right_now .page-count span:before,
+.wp-menu-image.dashicons-admin-page::before {
+  content: var(--icon-pages) !important;
+}
+
+/* Replace the Comments icon. */
+#dashboard_right_now .comment-count a:before,
+.wp-menu-image.dashicons-admin-comments::before {
+  content: var(--icon-comments) !important;
+}
+
+/* Replace the Appearance icon. */
+.wp-menu-image.dashicons-admin-appearance::before {
+  content: var(--icon-appearance) !important;
+}
+
+/* Replace the Plugins icon. */
+.wp-menu-image.dashicons-admin-plugins::before {
+  content: var(--icon-plugins) !important;
+}
+
+/* Replace the Users icon. */
+.wp-menu-image.dashicons-admin-users::before {
+  content: var(--icon-users) !important;
+}
+
+/* Replace the Tools icon. */
+.wp-menu-image.dashicons-admin-tools::before {
+  content: var(--icon-tools) !important;
+}
+
+/* Replace the Settings icon. */
+.wp-menu-image.dashicons-admin-settings::before {
+  content: var(--icon-settings) !important;
+}
+
+/* Replace the Settings icon. */
+.wp-menu-image.dashicons-tickets::before {
+  content: var(--icon-support) !important;
+}
+
+#titlediv #title {
+  padding: 10px 20px !important;
+  height: auto !important;
+}
+
+#poststuff .stuffbox>h3,
+#poststuff h2,
+#poststuff h3.hndle {
+  font-size: 16px !important;
+  padding: 10px 20px !important;
+}
+
+.postbox .handlediv {
+  margin-right: 10px !important;
+  margin-top: 2px !important;
+}
+
+.postbox .inside {
+  padding: 20px 10px 5px 10px !important;
+  margin-top: 0px !important;
+}
+
+.form-table {
+  margin-top: 0px !important;
+}
+
+.form-table label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  display: block;
+}
+
+.form-table textarea {
+  min-height: 100px;
+}
+
+.form-table tr {
+  display: table !important;
+  width: 100% !important;
+}
+.form-table tr {
+  margin-bottom: 15px;
+}
+
+.form-table th,
+.form-table td {
+  display: table-row !important;
+  width: 100% !important;
+}
+
+.form-table .full-width {
+  width: 100% !important;
+}
+
+.post-type-grid {
+  box-sizing: border-box;
+  width: calc(100% + 20px);
+  margin-right: -10px;
+  margin-left: -10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: flex;
+}
+
+.post-type-grid > .post-type-column {
+  box-sizing: border-box;
+  padding-right: 10px;
+  padding-left: 10px;
+  flex: 1 0 auto;
+  clear: none;
+}
+
+#accordion-section-themes {
+  pointer-events: none !important;
+}
+
+#accordion-section-themes .change-theme,
+#accordion-panel-nav_menus,
+#accordion-section-static_front_page,
+#accordion-section-custom_css {
+  pointer-events: none !important;
+  visibility: hidden !important;
+  display: none !important;
+}
+
+
+body.themes-php .theme-count,
+body.themes-php .page-title-action,
+body.themes-php .search-form,
+body.themes-php .themes .theme:not([data-slug='seeds-child']),
+body.themes-php .theme-overlay .theme-header .left,
+body.themes-php .theme-overlay .theme-header .right {
+  pointer-events: none !important;
+  visibility: hidden !important;
+  display: none !important;
+}
