@@ -12,40 +12,436 @@
   --icon-settings: '\f085';
   --icon-support: '\f059';
 
+  --admin-body-color: rgb(41, 43, 44);
+  --admin-body-background: rgba(14, 22, 34, 0.02);
+
+  --adminbar-height: 60px;
+  --adminbar-background: rgb(255, 255, 255);
+
+  --adminbar-item-color: rgb(51, 55, 64);
+  --adminbar-item-hover-background: rgb(250, 250, 251);
+  --adminbar-item-hover-color: rgb(51, 55, 64);
+
+  --site-title-background: rgb(127, 184, 0);
+
+  --sidebar-width: 240px;
+  --sidebar-background: rgb(24, 32, 46);
+
+  --admin-card-background: rgb(255, 255, 255);
+  --admin-card-shadow: rgb(227, 233, 243) 0px 2px 4px 0px;
+  --admin-card-padding: 19px 30px 30px;
+  --admin-card-radius: 3px;
+
+  --admin-link-color: rgb(0, 126, 255);
+  --admin-link-color-hover: rgb(0, 126, 255);
+
+  --admin-action-color: rgb(0, 126, 255);
+
 }
+
 
 /*
 ========================================
-Hide unwanted elements in the dashboard.
+Global admin style resets.
 ========================================
 */
 
-#wp-admin-bar-wp-logo,
-#adminmenu .wp-menu-separator,
-#collapse-menu,
-#footer-thankyou {
-  visibility: hidden !important;
+html {
+  font-family: sans-serif !important;
+  box-sizing: border-box !important;
+  line-height: 1.5 !important;
+  font-size: 62.5% !important;
+}
+
+body {
+  background-color: var(--admin-body-background) !important;
+  color: var(--admin-body-color) !important;
+  font-family: Lato, sans-serif !important;
+  font-size: 1.4rem !important;
+}
+
+h1 {
+  text-transform: capitalize !important;
+  font-size: 2.4rem !important;
+  line-height: 1.1 !important;
+  font-weight: 600 !important;
+  white-space: nowrap;
+  width: fit-content;
+  max-width: 100%;
+}
+
+h2 {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+  font-size: 2rem !important;
+}
+
+p {
+  color: rgb(92, 95, 102) !important;
+  font-size: 14px !important;
+}
+
+a,
+.is-link {
+  color: var(--admin-link-color) !important;
+}
+
+
+/*
+========================================
+Admin input style resets.
+========================================
+*/
+
+fieldset {
+  margin-bottom: 15px;
+  display: block;
+}
+
+fieldset.inline-field {
+  display: inline-block;
+}
+
+fieldset.inline-field + fieldset.inline-field {
+  margin-left: 15px;
+}
+
+fieldset label {
+  align-items: center;
+  cursor: default;
+  display: flex;
+}
+
+fieldset > strong,
+fieldset label > strong {
+  color: rgb(51, 55, 64);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: default;
+  display: block;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  border: 1px solid rgba(16, 22, 34, 0.15) !important;
+  background-color: rgb(253, 253, 253) !important;
+  box-shadow: none !important;
+  height: 16px !important;
+  width: 16px !important;
+}
+
+input[type=checkbox] {
+  border-radius: 2px !important;
+}
+
+input[type=checkbox]:checked::before {
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  content: '\f00c';
+}
+
+input[type=radio] {
+  border-radius: 50% !important;
+}
+
+input[type=radio]:checked::before {
+  margin: 2px !important;
+  height: 10px !important;
+  width: 10px !important;
+}
+
+.input-toggle {
+  border: 1px solid rgba(16, 22, 34, 0.15) !important;
+  background-color: rgb(253, 253, 253) !important;
+  border-radius: 2px !important;
+  height: 3.4rem !important;
+  width: 8.5rem !important;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.input-toggle::before,
+.input-toggle::after {
+  text-transform: uppercase;
+  justify-content: center;
+  width: calc(50% - 4px);
+  letter-spacing: 0.5px;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  font-weight: 600;
+  font-size: 10px;
+  display: flex;
+  height: 100%;
+  top: 0;
+}
+
+.input-toggle::before {
+  content: 'Off';
+  z-index: 0;
+  left: 2px;
+}
+
+.input-toggle::after {
+  color: rgb(253, 253, 253);
+  content: 'On';
+  z-index: 2;
+  right: 2px;
+}
+
+.input-toggle input[type=checkbox] {
+  transition: transform .2s ease-in-out, background-color .2s ease-in-out;
+  background-color: rgba(16, 22, 34, 0.15) !important;
+  height: calc(100% - 6px) !important;
+  width: calc(50% - 6px) !important;
+  transform: translate3d(0, 0, 0);
+  border-radius: 2px !important;
+  border: none !important;
+  margin: 3px !important;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+}
+
+.input-toggle input[type=checkbox]:checked {
+  transform: translate3d(calc(100% + 6px), 0, 0);
+  background-color: var(--admin-action-color) !important;
+}
+
+.input-toggle input[type=checkbox]::before {
+  background-color: rgb(253, 253, 253);
+  content: '' !important;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: -100%;
+  top: 2px;
+}
+
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+[contenteditable],
+textarea,
+select {
+  font-family: Lato, sans-serif !important;
+  color: rgb(51, 55, 64) !important;
+  outline: 0px;
+}
+
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+textarea:not(.editor-post-title__input),
+select {
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgb(227, 233, 243) !important;
+  min-height: 3.4rem !important;
+  width: 100%;
+  height: 3.4rem !important;
+  font-weight: 400 !important;
+  font-size: 1.3rem !important;
+  cursor: text;
+  padding: 0px 1rem !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-image: initial !important;
+  border-radius: 2px !important;
+}
+
+textarea:not(.editor-post-title__input) {
+  padding: 0.65rem 1rem !important;
+  max-height: 20.4rem !important;
+  resize: vertical !important;
+  height: 13.6rem !important;
+}
+
+select {
+  background-image: url(../../images/select.svg) !important;
+  background-position: right center !important;
+  background-repeat: no-repeat !important;
+  padding: 0 30px 0 1rem !important;
+  background-size: 30px !important;
+  cursor: pointer !important;
+}
+
+
+/*
+========================================
+Admin button style resets.
+========================================
+*/
+
+button,
+[type=submit],
+[type=button],
+.is-button {
+  -webkit-appearance: button;
+  box-sizing: border-box; !important;
+  display: inline-flex !important;
+  white-space: nowrap !important;
+  border-radius: 2px !important;
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  overflow: hidden !important;
+  padding: 0 15px !important;
+  line-height: 1 !important;
+  outline: 0px !important;
+  height: 3.4rem !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-button {
+  background-color: rgb(253, 253, 253) !important;
+  border: 1px solid var(--admin-action-color) !important;
+  color: var(--admin-action-color) !important;
+}
+
+.button-link-delete {
+  border-color: rgb(239, 77, 71) !important;
+  color: rgb(239, 77, 71) !important;
+}
+
+button.is-primary {
+  background-color: var(--admin-action-color) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.components-button.is-tertiary {
+  color: var(--admin-link-color) !important;
+}
+
+
+/*
+========================================
+Admin table style resets.
+========================================
+*/
+
+table {
+  border-radius: var(--admin-card-radius) !important;
+  box-shadow: var(--admin-card-shadow) !important;
+  border-collapse: initial !important;
+  border: none !important;
+  table-layout: fixed;
+  border-spacing: 0;
+  color: #212529;
+  width: 100%;
+}
+
+thead {
+  background-color: rgb(243, 243, 243) !important;
+  height: 43px !important;
+  overflow: hidden;
+}
+
+thead td {
+  border-bottom: none !important;
+}
+
+table th,
+table tr,
+table td {
+  border-width: initial;
+  border-color: initial;
+  border-image: initial;
+  border-style: none;
+}
+
+table th,
+table td {
+  vertical-align: middle !important;
+  padding: 0 25px;
+}
+
+table th {
+  border-bottom: none !important;
+  font-size: 1.3rem !important;
+  height: 43px !important;
+}
+
+tbody tr {
+  background-color: var(--admin-card-background) !important;
+  height: 54px !important;
+}
+
+tbody tr:hover {
+  background-color: rgb(247, 248, 248) !important;
+}
+
+tbody td {
+  border-top: 1px solid rgb(241, 241, 242) !important;
+  vertical-align: middle !important;
+  line-height: 1.8rem !important;
+  font-size: 1.3rem !important;
+  font-weight: 400 !important;
+  padding: 0 15px !important;
+  height: 53px !important;
+}
+
+tfoot {
   display: none !important;
 }
 
 
 /*
 ========================================
-Increase the height of the admin bard.
+Postbox / card style resets.
 ========================================
 */
 
-html.wp-toolbar {
-  padding-top: 34px !important;
+.postbox {
+  background-color: var(--admin-card-background) !important;
+  border-radius: var(--admin-card-radius) !important;
+  box-shadow: var(--admin-card-shadow) !important;
+  padding: var(--admin-card-padding) !important;
+  border: none !important;
 }
 
-#wpadminbar {
-  line-height: 34px !important;
-  height: 34px !important;
+.postbox .handlediv {
+  visibility: hidden !important;
+  display: none !important;
 }
 
-#wp-admin-bar-site-name > a {
-  padding-left: 0px !important;
+.postbox h2 {
+  pointer-events: none !important;
+  padding: 0 0 17px !important;
+  line-height: 18px !important;
+  border: none !important;
+}
+
+.postbox .main,
+.postbox .inside {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 
@@ -82,8 +478,8 @@ icons from the FontAwesome library.
 #dashboard_right_now li a:before,
 #dashboard_right_now li>span:before {
   text-align: center;
-  margin: 0 0 0 6px;
-  width: 24px;
+  width: auto;
+  margin: 0;
 }
 
 #dashboard_right_now li a:before,
@@ -104,11 +500,6 @@ icons from the FontAwesome library.
   text-align: center !important;
   top: 0px !important;
   width: 36px !important;
-}
-
-/* Replace the View Site icon. */
-#wp-admin-bar-site-name > a::before {
-  content: '\f57d' !important;
 }
 
 /* Replace the Dashboard icon. */
@@ -171,78 +562,6 @@ icons from the FontAwesome library.
   content: var(--icon-support) !important;
 }
 
-#titlediv #title {
-  padding: 10px 20px !important;
-  height: auto !important;
-}
-
-#poststuff .stuffbox>h3,
-#poststuff h2,
-#poststuff h3.hndle {
-  font-size: 16px !important;
-  padding: 10px 20px !important;
-}
-
-.postbox .handlediv {
-  margin-right: 10px !important;
-  margin-top: 2px !important;
-}
-
-.postbox .inside {
-  padding: 20px 10px 5px 10px !important;
-  margin-top: 0px !important;
-}
-
-.form-table {
-  margin-top: 0px !important;
-}
-
-.form-table label {
-  margin-bottom: 5px;
-  font-weight: 600;
-  display: block;
-}
-
-.form-table textarea {
-  min-height: 100px;
-}
-
-.form-table tr {
-  display: table !important;
-  width: 100% !important;
-}
-.form-table tr {
-  margin-bottom: 15px;
-}
-
-.form-table th,
-.form-table td {
-  display: table-row !important;
-  width: 100% !important;
-}
-
-.form-table .full-width {
-  width: 100% !important;
-}
-
-.post-type-grid {
-  box-sizing: border-box;
-  width: calc(100% + 20px);
-  margin-right: -10px;
-  margin-left: -10px;
-  padding-right: 10px;
-  padding-left: 10px;
-  display: flex;
-}
-
-.post-type-grid > .post-type-column {
-  box-sizing: border-box;
-  padding-right: 10px;
-  padding-left: 10px;
-  flex: 1 0 auto;
-  clear: none;
-}
-
 #accordion-section-themes {
   pointer-events: none !important;
 }
@@ -266,4 +585,366 @@ body.themes-php .theme-overlay .theme-header .right {
   pointer-events: none !important;
   visibility: hidden !important;
   display: none !important;
+}
+
+
+/**
+========================
+Admin bar header styles
+========================
+ */
+
+html.wp-toolbar {
+  padding-top: var(--adminbar-height) !important;
+}
+
+#wpadminbar {
+  background-color: var(--adminbar-background) !important;
+  box-shadow: rgba(40, 42, 49, 0.16) 0px 1px 2px 0px;
+  line-height: var(--adminbar-height) !important;
+  height: var(--adminbar-height) !important;
+}
+
+#wpadminbar .quicklinks .ab-empty-item,
+#wpadminbar .quicklinks a,
+#wpadminbar .shortlink-input {
+  line-height: var(--adminbar-height) !important;
+  height: var(--adminbar-height) !important;
+}
+
+#wpadminbar .quicklinks > ul > li > a {
+  padding: 0 1.4rem !important;
+}
+
+#wp-admin-bar-top-secondary {
+
+}
+
+#wp-admin-bar-my-account > a.ab-item {
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+}
+
+#wp-admin-bar-my-account > a.ab-item .avatar {
+  border-radius: 50% !important;
+  margin: 0 1rem 0 0 !important;
+  border: none !important;
+  height: 32px !important;
+  width: 32px !important;
+  order: 1;
+}
+
+#wp-admin-bar-my-account > a.ab-item .display-name {
+  font-weight: 500;
+  order: 2;
+}
+
+
+/**
+Admin sidebar styles.
+ */
+
+#adminmenu {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+#adminmenu li {
+  cursor: default !important;
+}
+
+#adminmenu .wp-submenu-head,
+#adminmenu a.menu-top {
+  background-color: transparent !important;
+  position: relative !important;
+  height: auto !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  color: rgb(145, 155, 174) !important;
+  justify-content: flex-start;
+  display: flex !important;
+  -webkit-font-smoothing: antialiased;
+  border-left: 0.3rem solid transparent !important;
+  text-decoration: none !important;
+  padding: 4px 0 4px 1.6rem !important;
+  align-items: center;
+}
+
+#adminmenu .wp-has-current-submenu div.wp-menu-image:before {
+  color: var(--site-title-background) !important;
+}
+
+#adminmenu .wp-submenu a {
+  color: rgb(145, 155, 174) !important;
+  padding: 8px 12px !important;
+}
+
+#adminmenu .wp-submenu li.current a {
+  color: inherit !important;
+}
+
+#adminmenu div.wp-menu-name {
+  padding: 0 !important;
+}
+
+#adminmenu li.menu-top:hover {
+  background-color: transparent !important;
+  color: #FFFFFF !important
+}
+
+#adminmenu li.menu-top:hover>a.menu-top,
+#adminmenu li.opensub:hover>a.menu-top,
+#adminmenu li>a.menu-top:focus {
+  background-color: rgb(28, 36, 49) !important;
+  color: #FFFFFF !important;
+}
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+  border-left: 0.3rem solid var(--site-title-background) !important;
+  background-color: rgb(28, 36, 49) !important;
+  color: #FFFFFF !important;
+}
+
+#adminmenu,
+#adminmenuback,
+#adminmenuwrap {
+  background-color: var(--sidebar-background) !important;
+  width: var(--sidebar-width) !important;
+}
+
+#adminmenu .wp-submenu {
+  background-color: rgb(28, 36, 49) !important;
+  padding-left: 1.6rem !important;
+  width: auto !important;
+}
+
+#wpadminbar .ab-empty-item,
+#wpadminbar a.ab-item,
+#wpadminbar>#wp-toolbar span.ab-label,
+#wpadminbar>#wp-toolbar span.noticon {
+  color: var(--adminbar-item-color) !important;
+}
+
+#wpadminbar .ab-top-menu>li:not(#wp-admin-bar-site-name).hover>.ab-item,
+#wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus,
+#wpadminbar:not(.mobile) .ab-top-menu>li:not(#wp-admin-bar-site-name):hover>.ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu>li:not(#wp-admin-bar-site-name)>.ab-item:focus {
+  background-color: var(--adminbar-item-hover-background) !important;
+  color: var(--adminbar-item-hover-color) !important;
+}
+
+#wp-admin-bar-site-name {
+  background-color: var(--site-title-background) !important;
+  width: var(--sidebar-width) !important;
+  color: #FFFFFF !important;
+}
+
+#wp-admin-bar-site-name > a.ab-item {
+  text-transform: uppercase !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+}
+
+#wp-admin-bar-site-name:hover > a.ab-item {
+  background-color: var(--site-title-background) !important;
+}
+
+#wpcontent, #wpfooter {
+  margin-left: var(--sidebar-width) !important;
+}
+
+#menu-posts::before,
+#menu-appearance::before {
+  padding-left: 2rem;
+  padding-right: 1.6rem;
+  padding-top: 1rem;
+  margin-bottom: 0.8rem;
+  color: rgb(91, 98, 111);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 800;
+  pointer-events: none;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 12px;
+  display: block;
+  cursor: default;
+}
+
+#menu-posts::before {
+  content: 'Content';
+}
+
+#menu-appearance::before {
+  content: 'General';
+}
+
+
+/*
+========================================
+Page editor styles.
+========================================
+*/
+
+.edit-post-layout {
+  padding-top: var(--adminbar-height) !important;
+}
+
+.edit-post-sidebar {
+  width: var(--sidebar-width) !important;
+  top: var(--adminbar-height) !important;
+}
+
+.edit-post-header {
+  height: var(--adminbar-height) !important;
+  background-color: transparent !important;
+  right: var(--sidebar-width) !important;
+  left: var(--sidebar-width) !important;
+  padding-right: 0 !important;
+  z-index: 99999 !important;
+  top: 0 !important;
+}
+
+.block-editor__container {
+  min-height: calc(100% - var(--adminbar-height)) !important;
+}
+
+.edit-post-layout__content {
+  margin-right: var(--sidebar-width) !important;
+  margin-left: var(--sidebar-width) !important;
+  top: var(--adminbar-height) !important;
+}
+
+.edit-post-layout__metaboxes:not(:empty) {
+  margin-top: 20px !important;
+  padding: 20px 0 !important;
+}
+
+.edit-post-meta-boxes-area .postbox > .inside {
+  border-bottom: none !important;
+}
+
+/* Editor notifications. */
+.auto-fold .edit-post-layout__content .components-editor-notices__snackbar {
+  right: var(--sidebar-width) !important;
+  left: var(--sidebar-width) !important;
+}
+
+/* Editor notification. */
+.components-snackbar {
+  background-color: var(--sidebar-background) !important;
+}
+
+.wp-block {
+  max-width: 100% !important;
+}
+
+
+/*
+========================================
+Hide unwanted elements in the dashboard.
+========================================
+*/
+
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content,
+#adminmenu #menu-dashboard,
+#adminmenu .wp-menu-separator,
+#wp-admin-bar-site-name > a::before,
+.menu-top:not(#menu-appearance):not(#menu-plugins):not(#menu-users):not(#menu-tools):not(#menu-settings) .wp-submenu,
+.menu-top.opensub .wp-submenu,
+#adminmenu .wp-submenu .wp-submenu-head,
+#screen-meta-links,
+#collapse-menu,
+#footer-thankyou {
+  visibility: hidden !important;
+  display: none !important;
+}
+
+
+/*
+========================================
+Custom grid styles.
+========================================
+*/
+
+.row {
+  box-sizing: border-box;
+  margin-right: -1.5rem;
+  margin-left: -1.5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+[class^=col-] {
+  box-sizing: border-box;
+  flex-direction: column;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.col-1 {
+  flex: 0 1 calc(calc(1 / 12) * 100%);
+  width: calc(calc(1 / 12) * 100%);
+}
+
+.col-2 {
+  flex: 0 1 calc(calc(2 / 12) * 100%);
+  width: calc(calc(2 / 12) * 100%);
+}
+
+.col-3 {
+  flex: 0 1 calc(calc(3 / 12) * 100%);
+  width: calc(calc(3 / 12) * 100%);
+}
+
+.col-4 {
+  flex: 0 1 calc(calc(4 / 12) * 100%);
+  width: calc(calc(4 / 12) * 100%);
+}
+
+.col-5 {
+  flex: 0 1 calc(calc(5 / 12) * 100%);
+  width: calc(calc(5 / 12) * 100%);
+}
+
+.col-6 {
+  flex: 0 1 calc(calc(6 / 12) * 100%);
+  width: calc(calc(6 / 12) * 100%);
+}
+
+.col-7 {
+  flex: 0 1 calc(calc(7 / 12) * 100%);
+  width: calc(calc(7 / 12) * 100%);
+}
+
+.col-8 {
+  flex: 0 1 calc(calc(8 / 12) * 100%);
+  width: calc(calc(8 / 12) * 100%);
+}
+
+.col-9 {
+  flex: 0 1 calc(calc(9 / 12) * 100%);
+  width: calc(calc(9 / 12) * 100%);
+}
+
+.col-10 {
+  flex: 0 1 calc(calc(10 / 12) * 100%);
+  width: calc(calc(10 / 12) * 100%);
+}
+
+.col-11 {
+  flex: 0 1 calc(calc(11 / 12) * 100%);
+  width: calc(calc(11 / 12) * 100%);
+}
+
+.col-12 {
+  flex: 0 1 calc(calc(12 / 12) * 100%);
+  width: calc(calc(12 / 12) * 100%);
 }

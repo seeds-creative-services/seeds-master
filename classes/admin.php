@@ -44,7 +44,7 @@ class Admin {
 			wp_enqueue_script('font-awesome');
 
 			// Enqueue Google Font styles.
-			wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Viga|Work+Sans&display=swap', [], '1.0.0');
+			wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700&display=swap', [], '1.0.0');
 			wp_enqueue_style('google-fonts');
 
 			// Enqueue parent theme admin stylesheet if it exists.
