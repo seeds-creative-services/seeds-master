@@ -18,8 +18,18 @@ class Admin {
 
 		add_action('wp_enqueue_scripts', function() {
 
-			wp_deregister_script('jquery');
-			wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', [], '3.4.1');
+            wp_deregister_script('jquery');
+
+		    if(file_exists(get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/jquery/dist/jquery.min.js")) {
+
+                wp_register_script('jquery', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/jquery/dist/jquery.min.js", [], '3.4.1');
+
+            }else{
+
+                wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', [], '3.4.1');
+
+            }
+
 			wp_enqueue_script('jquery');
 
 		});
@@ -32,7 +42,16 @@ class Admin {
 		add_action('admin_enqueue_scripts', function() {
 
 			// Enqueue Font Awesome script.
-			wp_register_script('font-awesome', 'https://kit.fontawesome.com/29f0ff1eb5.js', [], '5.9.0');
+            if(file_exists(get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/js/all.js")) {
+
+                wp_register_script('font-awesome', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/js/all.js", [], '5.9.0');
+
+            }else{
+
+                wp_register_script('font-awesome', 'https://kit.fontawesome.com/29f0ff1eb5.js', [], '5.9.0');
+
+            }
+
 			wp_enqueue_script('font-awesome');
 
 			// Enqueue Google Font styles.
