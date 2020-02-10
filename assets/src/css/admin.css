@@ -418,7 +418,7 @@ Postbox / card style resets.
 ========================================
 */
 
-.postbox {
+.postbox, .edit-post-sidebar {
   background-color: var(--admin-card-background) !important;
   border-radius: var(--admin-card-radius) !important;
   box-shadow: var(--admin-card-shadow) !important;
@@ -756,6 +756,11 @@ Admin sidebar styles.
   margin-left: var(--sidebar-width) !important;
 }
 
+.post-new-php #wpcontent,
+.post-new-php #wpfooter {
+  padding-right: 35px !important;
+}
+
 #menu-posts::before,
 #menu-appearance::before {
   padding-left: 2rem;
@@ -795,8 +800,19 @@ Page editor styles.
 }
 
 .edit-post-sidebar {
-  width: var(--sidebar-width) !important;
   top: var(--adminbar-height) !important;
+  width: var(--sidebar-width) !important;
+  overflow-x: hidden !important;
+  right: 15px !important;
+  padding: 0 !important;
+  bottom: 0 !important;
+}
+
+.components-panel__body-title .components-button {
+  justify-content: flex-start !important;
+  font-size: 1.3rem !important;
+  text-align: left !important;
+  font-weight: 600 !important;
 }
 
 .edit-post-header {
@@ -804,6 +820,7 @@ Page editor styles.
   background-color: transparent !important;
   right: var(--sidebar-width) !important;
   left: var(--sidebar-width) !important;
+  border-bottom: none !important;
   padding-right: 0 !important;
   z-index: 99999 !important;
   top: 0 !important;
@@ -814,14 +831,22 @@ Page editor styles.
 }
 
 .edit-post-layout__content {
-  margin-right: var(--sidebar-width) !important;
+  padding-right: var(--sidebar-width) !important;
   margin-left: var(--sidebar-width) !important;
   top: var(--adminbar-height) !important;
+  padding-bottom: 20px !important;
+  overflow-y: scroll !important;
+  margin-right: 0 !important;
 }
 
 .edit-post-layout__metaboxes:not(:empty) {
-  margin-top: 20px !important;
-  padding: 20px 0 !important;
+  padding: 0 0 20px 0 !important;
+  border-top: none !important;
+  margin-top: 0px !important;
+}
+
+.edit-post-layout__metaboxes:not(:empty) .edit-post-meta-boxes-area {
+  margin: auto 40px !important;
 }
 
 .edit-post-meta-boxes-area .postbox > .inside {
@@ -843,6 +868,17 @@ Page editor styles.
   max-width: 100% !important;
 }
 
+.block-editor-block-list__layout {
+  padding-right: 40px !important;
+  padding-left: 40px !important;
+}
+
+.block-editor-block-list__empty-block-inserter .block-editor-inserter__toggle,
+.block-editor-default-block-appender .block-editor-inserter .block-editor-inserter__toggle {
+  height: 40px !important;
+  width: 40px !important;
+}
+
 
 /*
 ========================================
@@ -856,7 +892,6 @@ Hide unwanted elements in the dashboard.
 #adminmenu #menu-dashboard,
 #adminmenu .wp-menu-separator,
 #wp-admin-bar-site-name > a::before,
-.menu-top:not(#menu-appearance):not(#menu-plugins):not(#menu-users):not(#menu-tools):not(#menu-settings) .wp-submenu,
 .menu-top.opensub .wp-submenu,
 #adminmenu .wp-submenu .wp-submenu-head,
 #screen-meta-links,

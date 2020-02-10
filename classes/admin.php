@@ -4,23 +4,15 @@ namespace SEEDS;
 
 class Admin {
 
-  public function __construct() {
+    public function __construct() {
 
-		error_reporting(0);
+        error_reporting(0);
 
-    /** Allow custom logo and post thumbnails. */
-    add_action('after_setup_theme', function() {
+        $this->UpdateJqueryVersion();
+        $this->EnqueueAssets();
+        $this->RemoveSidebarLinks();
 
-			add_theme_support('custom-logo');
-			add_theme_support('post-thumbnails');
-
-    });
-
-		$this->UpdateJqueryVersion();
-		$this->EnqueueAssets();
-		$this->RemoveSidebarLinks();
-
-	}
+    }
 
 	public function UpdatejQueryVersion() {
 
