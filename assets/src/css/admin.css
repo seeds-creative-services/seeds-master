@@ -12,6 +12,9 @@
   --icon-settings: '\f085';
   --icon-support: '\f059';
 
+  --admin-highlight-color-primary: rgb(127, 184, 0);
+  --admin-highlight-color-secondary: rgb(0, 126, 255);
+
   --admin-body-color: rgb(41, 43, 44);
   --admin-body-background: rgba(14, 22, 34, 0.02);
 
@@ -22,8 +25,6 @@
   --adminbar-item-hover-background: rgb(250, 250, 251);
   --adminbar-item-hover-color: rgb(51, 55, 64);
 
-  --site-title-background: rgb(127, 184, 0);
-
   --sidebar-width: 240px;
   --sidebar-background: rgb(24, 32, 46);
 
@@ -32,10 +33,10 @@
   --admin-card-padding: 19px 30px 30px;
   --admin-card-radius: 3px;
 
-  --admin-link-color: rgb(0, 126, 255);
-  --admin-link-color-hover: rgb(0, 126, 255);
+  --admin-link-color: var(--admin-highlight-color-secondary);
+  --admin-link-color-hover: var(--admin-highlight-color-secondary);
 
-  --admin-action-color: rgb(0, 126, 255);
+  --admin-action-color: var(--admin-highlight-color-secondary);
 
 }
 
@@ -304,6 +305,7 @@ button,
 [type=button],
 .is-button {
   -webkit-appearance: button;
+  border: 2px solid transparent !important;
   box-sizing: border-box; !important;
   display: inline-flex !important;
   white-space: nowrap !important;
@@ -321,7 +323,7 @@ button,
 
 .is-button {
   background-color: rgb(253, 253, 253) !important;
-  border: 1px solid var(--admin-action-color) !important;
+  border-color: var(--admin-action-color) !important;
   color: var(--admin-action-color) !important;
 }
 
@@ -673,7 +675,7 @@ Admin sidebar styles.
 }
 
 #adminmenu .wp-has-current-submenu div.wp-menu-image:before {
-  color: var(--site-title-background) !important;
+  color: var(--admin-highlight-color-primary) !important;
 }
 
 #adminmenu .wp-submenu a {
@@ -702,7 +704,7 @@ Admin sidebar styles.
 }
 
 #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
-  border-left: 0.3rem solid var(--site-title-background) !important;
+  border-left: 0.3rem solid var(--admin-highlight-color-primary) !important;
   background-color: rgb(28, 36, 49) !important;
   color: #FFFFFF !important;
 }
@@ -736,7 +738,7 @@ Admin sidebar styles.
 }
 
 #wp-admin-bar-site-name {
-  background-color: var(--site-title-background) !important;
+  background-color: var(--admin-highlight-color-primary) !important;
   width: var(--sidebar-width) !important;
   color: #FFFFFF !important;
 }
@@ -749,7 +751,7 @@ Admin sidebar styles.
 }
 
 #wp-admin-bar-site-name:hover > a.ab-item {
-  background-color: var(--site-title-background) !important;
+  background-color: var(--admin-highlight-color-primary) !important;
 }
 
 #wpcontent, #wpfooter {

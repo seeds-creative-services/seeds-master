@@ -67,9 +67,9 @@ class Admin {
 			}
 
 			// Enqueue child theme admin stylesheet if it exists.
-			if(file_exists(get_template_directory() . "/assets/dist/css/admin.css")) {
+			if(file_exists(get_stylesheet_directory() . "/assets/dist/css/admin.css")) {
 
-				wp_register_style('seeds-admin-child-css', get_template_directory_uri() . "/assets/dist/css/admin.css", ['seeds-admin-parent-css'], '1.0.0');
+				wp_register_style('seeds-admin-child-css', get_stylesheet_directory_uri() . "/assets/dist/css/admin.css", ['seeds-admin-parent-css'], '1.0.0');
 				wp_enqueue_style('seeds-admin-child-css');
 
 			}
@@ -83,9 +83,9 @@ class Admin {
 			}
 
 			// Enqueue child theme admin script if it exists.
-			if(file_exists(get_template_directory() . "/assets/dist/js/admin.js")) {
+			if(file_exists(get_stylesheet_directory() . "/assets/dist/js/admin.js")) {
 
-				wp_register_script('seeds-admin-child-js', get_template_directory_uri() . "/assets/dist/js/admin.js", ['jquery', 'seeds-admin-parent-js'], '1.0.0');
+				wp_register_script('seeds-admin-child-js', get_stylesheet_directory_uri() . "/assets/dist/js/admin.js", ['jquery', 'seeds-admin-parent-js'], '1.0.0');
 				wp_enqueue_script('seeds-admin-child-js');
 
 			}
