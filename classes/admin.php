@@ -16,11 +16,11 @@ class Admin {
 
 	public function UpdatejQueryVersion() {
 
-		add_action('wp_enqueue_scripts', function() {
+		add_action('admin_enqueue_scripts', function() {
 
             wp_deregister_script('jquery');
 
-		    if(file_exists(get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/jquery/dist/jquery.min.js")) {
+		    if(file_exists(get_theme_root() . "/" . wp_get_theme()->template . "/node_modules/jquery/dist/jquery.min.js")) {
 
                 wp_register_script('jquery', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/jquery/dist/jquery.min.js", [], '3.4.1');
 
@@ -42,17 +42,20 @@ class Admin {
 		add_action('admin_enqueue_scripts', function() {
 
 			// Enqueue Font Awesome script.
-            if(file_exists(get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/js/all.js")) {
+            if(is_dir(get_theme_root() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro")) {
 
-                wp_register_script('font-awesome', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/js/all.js", [], '5.9.0');
+                wp_register_style('fa-all', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/css/all.css", [], '5.9.0');
+                wp_enqueue_style('fa-all');
+
+                wp_register_style('fa-brands', get_theme_root_uri() . "/" . wp_get_theme()->template . "/node_modules/@fortawesome/fontawesome-pro/css/brands.css", [], '5.9.0');
+                wp_enqueue_style('fa-brands');
 
             }else{
 
-                wp_register_script('font-awesome', 'https://kit.fontawesome.com/29f0ff1eb5.js', [], '5.9.0');
+                wp_register_script('fa-kit', 'https://kit.fontawesome.com/29f0ff1eb5.js', [], '5.9.0');
+                wp_enqueue_script('fa-kit');
 
             }
-
-			wp_enqueue_script('font-awesome');
 
 			// Enqueue Google Font styles.
 			wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700&display=swap', [], '1.0.0');

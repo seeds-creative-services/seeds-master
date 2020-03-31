@@ -40,6 +40,10 @@ class MetaBox  {
 
             }
 
+        }else{
+
+            $this->screens = $screens;
+
         }
 
         add_action("add_meta_boxes", array($this, 'register'));

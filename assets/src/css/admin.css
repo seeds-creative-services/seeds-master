@@ -95,9 +95,44 @@ Admin input style resets.
 ========================================
 */
 
+.search-box,
+.tablenav .actions {
+  display: flex !important;
+}
+
 fieldset {
   margin-bottom: 15px;
   display: block;
+}
+
+.fieldset-content {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.fieldset-content input[type=date],
+.fieldset-content input[type=datetime-local],
+.fieldset-content input[type=datetime],
+.fieldset-content input[type=email],
+.fieldset-content input[type=month],
+.fieldset-content input[type=number],
+.fieldset-content input[type=password],
+.fieldset-content input[type=search],
+.fieldset-content input[type=tel],
+.fieldset-content input[type=text],
+.fieldset-content input[type=time],
+.fieldset-content input[type=url],
+.fieldset-content input[type=week],
+.fieldset-content textarea:not(.editor-post-title__input),
+.fieldset-content select {
+  flex: 0 1 auto;
+}
+
+.fieldset-content button,
+.fieldset-content .button {
+  margin-left: 1rem;
+  flex: 1 0 auto;
 }
 
 fieldset.inline-field {
@@ -122,6 +157,63 @@ fieldset label > strong {
   font-weight: 600;
   cursor: default;
   display: block;
+}
+
+.field {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(227, 233, 243);
+  flex-direction: row;
+  border-radius: 2px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  display: flex;
+}
+
+.field:focus-within {
+  border-color: var(--admin-highlight-color-tertiary);
+}
+
+.field input[type=date],
+.field input[type=datetime-local],
+.field input[type=datetime],
+.field input[type=email],
+.field input[type=month],
+.field input[type=number],
+.field input[type=password],
+.field input[type=search],
+.field input[type=tel],
+.field input[type=text],
+.field input[type=time],
+.field input[type=url],
+.field input[type=week],
+.field textarea:not(.editor-post-title__input),
+.field select {
+  border: none !important;
+  flex: 0 1 auto;
+}
+
+.field-prepend,
+.field-append {
+  background-color: var(--admin-body-background);
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  min-height: 3.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: 3.4rem;
+  flex: 1 0 auto;
+}
+
+.field-prepend {
+  border-right: 1px solid rgb(227, 233, 243);
+  order: 0;
+}
+
+.field-append {
+  border-left: 1px solid rgb(227, 233, 243);
+  order: 10;
 }
 
 input[type=checkbox],
@@ -200,6 +292,7 @@ input[type=radio]:checked::before {
 .input-toggle input[type=checkbox] {
   transition: transform .2s ease-in-out, background-color .2s ease-in-out;
   background-color: rgba(16, 22, 34, 0.15) !important;
+  box-shadow: none !important;
   height: calc(100% - 6px) !important;
   width: calc(50% - 6px) !important;
   transform: translate3d(0, 0, 0);
@@ -275,6 +368,7 @@ select {
   border-style: solid !important;
   border-image: initial !important;
   border-radius: 2px !important;
+  box-shadow: none !important;
 }
 
 textarea:not(.editor-post-title__input) {
@@ -293,6 +387,27 @@ select {
   cursor: pointer !important;
 }
 
+input[type=color]:focus,
+input[type=date]:focus,
+input[type=datetime-local]:focus,
+input[type=datetime]:focus,
+input[type=email]:focus,
+input[type=month]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=time]:focus,
+input[type=url]:focus,
+input[type=week]:focus,
+select:focus,
+textarea:focus,
+textarea:focus-within {
+  box-shadow: none !important;
+  border-color: var(--admin-highlight-color-tertiary) !important;
+}
+
 
 /*
 ========================================
@@ -303,7 +418,11 @@ Admin button style resets.
 button,
 [type=submit],
 [type=button],
-.is-button {
+.is-button,
+.button-primary,
+.page-title-action,
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
   -webkit-appearance: button;
   border: 2px solid transparent !important;
   box-sizing: border-box; !important;
@@ -315,13 +434,18 @@ button,
   overflow: hidden !important;
   padding: 0 15px !important;
   line-height: 1 !important;
-  outline: 0px !important;
+  outline: 0 !important;
   height: 3.4rem !important;
   justify-content: center;
   align-items: center;
 }
+.editor-post-featured-image__preview {
+  overflow: visible !important;
+}
 
-.is-button {
+.is-button,
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
   background-color: rgb(253, 253, 253) !important;
   border-color: var(--admin-action-color) !important;
   color: var(--admin-action-color) !important;
@@ -332,7 +456,9 @@ button,
   color: rgb(239, 77, 71) !important;
 }
 
-button.is-primary {
+button.is-primary,
+.page-title-action,
+.button-primary {
   background-color: var(--admin-action-color) !important;
   color: rgb(255, 255, 255) !important;
 }
@@ -348,12 +474,22 @@ Admin table style resets.
 ========================================
 */
 
+.subsubsub,
+.tablenav {
+  margin: 15px 0 !important;
+  display: flex !important;
+  padding: 0 !important;
+}
+
+.tablenav .actions select {
+  max-width: none !important;
+}
+
 table {
   border-radius: var(--admin-card-radius) !important;
   box-shadow: var(--admin-card-shadow) !important;
   border-collapse: initial !important;
   border: none !important;
-  table-layout: fixed;
   border-spacing: 0;
   color: #212529;
   width: 100%;
@@ -381,13 +517,17 @@ table td {
 table th,
 table td {
   vertical-align: middle !important;
-  padding: 0 25px;
+  padding: 0 15px;
 }
 
 table th {
   border-bottom: none !important;
   font-size: 1.3rem !important;
   height: 43px !important;
+}
+
+table th#image {
+  width: 100px;
 }
 
 tbody tr {
@@ -401,12 +541,22 @@ tbody tr:hover {
 
 tbody td {
   border-top: 1px solid rgb(241, 241, 242) !important;
-  vertical-align: middle !important;
+  vertical-align: top !important;
   line-height: 1.8rem !important;
   font-size: 1.3rem !important;
   font-weight: 400 !important;
-  padding: 0 15px !important;
+  padding: 15px !important;
   height: 53px !important;
+}
+
+tbody td.column-image {
+  max-width: 100px;
+  width: 100px;
+}
+
+tbody td.column-image > img {
+  max-height: 100px !important;
+  max-width: 100px !important;
 }
 
 tfoot {
@@ -490,7 +640,7 @@ icons from the FontAwesome library.
 .wp-menu-image::before {
   font-family: "Font Awesome 5 Pro" !important;
   font-weight: 900 !important;
-  font-size: 16px !important;
+  font-size: 13px !important;
 }
 
 #wp-admin-bar-site-name > a::before,
@@ -799,6 +949,11 @@ Page editor styles.
 
 .edit-post-layout {
   padding-top: var(--adminbar-height) !important;
+}
+
+.components-responsive-wrapper,
+.components-responsive-wrapper > span {
+  width: 100%;
 }
 
 .edit-post-sidebar {
